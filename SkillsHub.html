@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Expertise</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+        margin: 0;
+        padding: 20px;
+    }
+
+    h1 {
+        text-align: center;
+        color: #333;
+        margin: 0 100px;
+    }
+
+    .search-container {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .search-input {
+        padding: 10px;
+        width: 300px;
+        border: none;
+        border-radius: 5px;
+    }
+
+    .employee-list {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .employee {
+        cursor: pointer;
+        background-color: #fff;
+        border-radius: 5px;
+        padding: 10px;
+        margin-bottom: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s ease;
+    }
+
+    .employee.highlight {
+        background-color: yellow;
+    }
+
+    .employee:hover {
+        background-color: #f5f5f5;
+    }
+
+    .details {
+        display: none;
+        margin-left: 20px;
+        background-color: #f5f5f5;
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .details p {
+        margin: 0 0 10px 0;
+    }
+
+    .logo-placeholder {
+        display: inline-block;
+        width: 100px;
+        height: 100px;
+        background-color: #ccc;
+        margin-right: 10px;
+    }
+
+    .title-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+</style>
+
+
+<script>
+    function toggleDetails(employeeId) {
+        const detailsElement = document.getElementById(`details-${employeeId}`);
+        detailsElement.style.display = detailsElement.style.display === 'none' ? 'block' : 'none';
+    }
+
+    function searchSkills() {
+        const input = document.getElementById('search-input').value.toLowerCase();
+        const employees = document.getElementsByClassName('employee');
+
+        for (let i = 0; i < employees.length; i++) {
+            const employee = employees[i];
+            const detailsElement = employee.nextElementSibling;
+            const detailsText = detailsElement.innerText.toLowerCase();
+
+            if (employee.innerText.toLowerCase().includes(input) || detailsText.includes(input)) {
+                employee.style.display = 'block';
+                detailsElement.style.display = 'block';
+            } else {
+                employee.style.display = 'none';
+                detailsElement.style.display = 'none';
+            }
+        }
+    }
+</script>
+
+</head>
+<body>
+
+    <h1>EMET Skills Hub</h1>
+	 <h2></h2>
+    <div class="search-container">
+        <input type="text" id="search-input" class="search-input" placeholder="Search for skills..." onkeyup="searchSkills()" />
+    </div>
+
+    <ul class="employee-list">
+            <li>
+      <div class="employee" id="employee-1" onclick="toggleDetails('1')">Victor Goman</div>
+      <div class="details" id="details-1">
+        <p><strong>Major:</strong> Electrical Engineering</p>
+        <p><strong>Expert in:</strong> Automation and Control, Electrical engineering, Energy saving and energy audit</p>
+        <p><strong>Interest:</strong> Energy saving in electromechanical system</p>
+        <p><strong>About me:</strong> My research interests focus on energy saving potentials in electromechanical systems.</p>
+        <p><strong>Skills:</strong></p>
+        <ul>
+          <li>PLC programming: Advanced</li>
+          <li>MatLab/Simulink: Advanced</li>
+          <li>SCADA: Advanced</li>
+        </ul>
+      </div>
+    </li>
+    <li>
+      <div class="employee" id="employee-2" onclick="toggleDetails('2')">Luis Cesar Akira Kakazu</div>
+      <div class="details" id="details-2">
+        <p><strong>Major:</strong> Electrical Engineering</p>
+        <p><strong>Expert in:</strong> Automobile Technology, Electrical engineering, Electronics (PCB, Circuit design and simulation)</p>
+        <p><strong>Interest:</strong> Automobile Technology</p>
+        <p><strong>About me:</strong> I'm interested in onboard electronics, electronics and controls systems applied on the cars.</p>
+        <p><strong>Skills:</strong></p>
+        <ul>
+          <li>CAE software (SolidWorks/Catia/etc): Advanced</li>
+        </ul>
+      </div>
+    </li>
+    <li>
+      <div class="employee" id="employee-3" onclick="toggleDetails('3')">Dr. Farhan Malik</div>
+      <div class="details" id="details-3">
+        <p><strong>Major:</strong> Electrical Engineering</p>
+        <p><strong>Expert in:</strong> Electrical engineering, Renewable and sustainable energy</p>
+        <p><strong>Interest:</strong> Electrical Engineering</p>
+        <p><strong>About me:</strong> </p>
+        <p><strong>Skills:</strong></p>
+        <ul>
+          <li>C/C++: Advanced</li>
+        </ul>
+      </div>
+    </li>
+    <li>
+      <div class="employee" id="employee-4" onclick="toggleDetails('4')">Dr. Mohammad Nadeem Khalid</div>
+      <div class="details" id="details-4">
+        <p><strong>Major:</strong> Mechanical engineering</p>
+        <p><strong>Expert in:</strong> Manufacturing and production, Energy saving and energy audit</p>
+        <p><strong>Interest:</strong> GTAW, GMAW, FSW in Manufacturing</p>
+        <p><strong>About me:</strong> </p>
+        <p><strong>Skills:</strong></p>
+        <ul>
+
+        </ul>
+      </div>
+    </li>
+    <li>
+      <div class="employee" id="employee-5" onclick="toggleDetails('5')">Wilian Castro Lopes</div>
+      <div class="details" id="details-5">
+        <p><strong>Major:</strong> Electrical Engineering</p>
+        <p><strong>Expert in:</strong> Automation and Control, Electronics (PCB, Circuit design and simulation), Electrical engineering</p>
+        <p><strong>Interest:</strong> Automation, Electrical Installation, Industrial Control, Pneumatics, Hydraulics</p>
+        <p><strong>About me:</strong> My background from the industry, from Brazil Skills and World Skills International covered these topics.</p>
+        <p><strong>Skills:</strong></p>
+        <ul>
+          <li>PLC programming: Advanced</li>
+          <li>Arduino: Advanced</li>
+          <li>SCADA: Advanced</li>
+        </ul>
+      </div>
+    </li>
+    <li>
+      <div class="employee" id="employee-6" onclick="toggleDetails('6')">Ihab Radi Abdelrahman</div>
+      <div class="details" id="details-6">
+        <p><strong>Major:</strong> Mechatronics Engineering</p>
+        <p><strong>Expert in:</strong> Automation and Control</p>
+        <p><strong>Interest:</strong> Pneumatics and Hydraulics</p>
+        <p><strong>About me:</strong> 1-PLC<br>2-Process Control<br>3-Process Automation<br>4-Electrical Drives</p>
+        <p><strong>Skills:</strong></p>
+        <ul>
+          <li>PLC programming: Advanced</li>
+        </ul>
+      </div>
+    </li>
+    <li>
+      <div class="employee" id="employee-7" onclick="toggleDetails('7')">Khalid Ibrahim Al Jarrah</div>
+      <div class="details" id="details-7">
+        <p><strong>Major:</strong> Health & Safety</p>
+        <p><strong>Expert in:</strong> 3D modeling and design, Manufacturing technologies, Health and Safety</p>
+        <p><strong>Interest:</strong> HVAC, Manufacturing Technologies, Health and Safety</p>
+        <p><strong>About me:</strong> HVAC</p>
+        <p><strong>Skills:</strong></p>
+        <ul>
+
+        </ul>
+      </div>
+    </li>
+    <li>
+      <div class="employee" id="employee-8" onclick="toggleDetails('8')">Yusuf Khan Airani</div>
+      <div class="details" id="details-8">
+        <p><strong>Major:</strong> Mechanical engineering</p>
+        <p><strong>Expert in:</strong> Manufacturing technologies, 3D modeling and design</p>
+        <p><strong>Interest:</strong> Manufacturing, Tool & Die Making</p>
+        <p><strong>About me:</strong> Additive Manufacturing, Machining, Tool & Die Design & Manufacturing, Sheet metal component production & troubleshooting on press tools.</p>
+        <p><strong>Skills:</strong></p>
+        <ul>
+          <li>CAE software (SolidWorks/Catia/etc): Advanced</li>
+          <li>CAM software: Advanced</li>
+        </ul>
+      </div>
+    </li>
+    <li>
+      <div class="employee" id="employee-9" onclick="toggleDetails('9')">Walid Ayadi</div>
+      <div class="details" id="details-9">
+        <p><strong>Major:</strong> Mechatronics Engineering</p>
+        <p><strong>Expert in:</strong> Robotics, Automation and Control, AI, Embedded systems, 3D modeling and design, Manufacturing technologies</p>
+        <p><strong>Interest:</strong> TinyML, IoT</p>
+        <p><strong>About me:</strong> Using TensorFlow models in small microcontrollers capable of running AI tasks (e.g., smartwatch). Using IoT in any project to control a plant remotely and collect data in the cloud.</p>
+        <p><strong>Skills:</strong></p>
+        <ul>
+          <li>Arduino: Expert</li>
+          <li>LabVIEW: Advanced</li>
+          <li>CAE software (SolidWorks/Catia/etc): Expert</li>
+          <li>CAM software: Advanced</li>
+        </ul>
+      </div>
+    </li>
+    <li>
+      <div class="employee" id="employee-10" onclick="toggleDetails('10')">Turker Turker</div>
+      <div class="details" id="details-10">
+        <p><strong>Major:</strong> Electrical Engineering</p>
+        <p><strong>Expert in:</strong> Robotics, Automation and Control, Embedded systems</p>
+        <p><strong>Interest:</strong> Nonlinear Control, Adaptive Control, State Feedback Control Systems, Robotic, Control of Electromechanical Systems, Control of Mechanical Systems</p>
+        <p><strong>About me:</strong> </p>
+        <p><strong>Skills:</strong></p>
+        <ul>
+          <li>PLC programming: Advanced</li>
+          <li>Arduino: Advanced</li>
+          <li>MatLab/Simulink: Advanced</li>
+        </ul>
+      </div>
+    </li>
+	    <li>
+      <div class="employee" id="employee-11" onclick="toggleDetails('11')">Hatsari Mitsudharmadi</div>
+      <div class="details" id="details-11">
+        <p><strong>Major:</strong> Mechanical Engineering</p>
+        <p><strong>Expert in:</strong> Experimental Fluid Mechanics and Aerodynamics</p>
+        <p><strong>Interest:</strong> Fluid Mechanics/Aerodynamics</p>
+        <p><strong>About me:</strong> I have been doing research in the field of Fluid Mechanics/Aerodynamics for about 15 years.</p>
+        <p><strong>Skills:</strong></p>
+        <ul>
+          <li>LabVIEW: Advanced</li>
+          <li>CAE software (SolidWorks/Catia/etc): Advanced</li>
+        </ul>
+      </div>
+    </li>
+    <li>
+      <div class="employee" id="employee-12" onclick="toggleDetails('12')">Fawwaz Alkhatib</div>
+      <div class="details" id="details-12">
+        <p><strong>Major:</strong> Electrical Engineering</p>
+        <p><strong>Expert in:</strong> Electronics (PCB, Circuit design and simulation), Renewable and sustainable energy, Electrical engineering, Energy saving and energy audit</p>
+        <p><strong>Interest:</strong> Electrical and Electronics Engineering</p>
+        <p><strong>About me:</strong> Renewable Energy and Energy saving and energy audit</p>
+        <p><strong>Skills:</strong></p>
+        <ul>
+          <li>C/C++: Advanced</li>
+          <li>PLC programming: Advanced</li>
+          <li>MatLab/Simulink: Advanced</li>
+        </ul>
+      </div>
+    </li>
+    <li>
+      <div class="employee" id="employee-13" onclick="toggleDetails('13')">Osama Hassan</div>
+      <div class="details" id="details-13">
+        <p><strong>Major:</strong> Mechatronics Engineering</p>
+        <p><strong>Expert in:</strong> Robotics, Automation and Control, Autonomous Systems</p>
+        <p><strong>Interest:</strong> Control Systems, Robotics</p>
+        <p><strong>About me:</strong></p>
+        <p><strong>Skills:</strong></p>
+        <ul>
+          <li>C/C++: Advanced</li>
+          <li>PLC programming: Expert</li>
+          <li>Raspberry PI: Advanced</li>
+          <li>Arduino: Advanced</li>
+          <li>MatLab/Simulink: Expert</li>
+          <li>SCADA: Advanced</li>
+        </ul>
+      </div>
+    </li>
+    <li>
+      <div class="employee" id="employee-14" onclick="toggleDetails('14')">Stefan Tomic</div>
+      <div class="details" id="details-14">
+        <p><strong>Major:</strong> Electrical Engineering</p>
+        <p><strong>Expert in:</strong> AI, Software application</p>
+        <p><strong>Interest:</strong> Artificial Intelligence and Machine Learning</p>
+        <p><strong>About me:</strong> I am interested in working on applicable AI projects that are linked to various fields. I also have a PhD in Signal Coding and I am interested in working on Compression of neural network models for size reduction.</p>
+        <p><strong>Skills:</strong></p>
+        <ul>
+          <li>Python: Advanced</li>
+          <li>C/C++: Advanced</li>
+        </ul>
+      </div>
+    </li>
+    <li>
+      <div class="employee" id="employee-15" onclick="toggleDetails('15')">Soumya Ambramoli</div>
+      <div class="details" id="details-15">
+        <p><strong>Major:</strong> Electrical Engineering</p>
+        <p><strong>Expert in:</strong> Electronics (PCB, Circuit design and simulation), Electrical engineering</p>
+        <p><strong>Interest:</strong> Electrical Machines, Power systems, Electric circuit design and Simulation</p>
+        <p><strong>About me:</strong></p>
+        <p><strong>Skills:</strong></p>
+        <ul>
+          <li>MatLab/Simulink: Advanced</li>
+        </ul>
+      </div>
+    </li>
+    <li>
+      <div class="employee" id="employee-16" onclick="toggleDetails('16')">Anand Gopalakrishnan</div>
+      <div class="details" id="details-16">
+        <p><strong>Major:</strong> Electrical Engineering</p>
+        <p><strong>Expert in:</strong> Electrical engineering</p>
+        <p><strong>Interest:</strong> Renewable Energy</p>
+        <p><strong>About me:</strong> Focusing on Renewable Energy identified as future growth areas in UAE</p>
+        <p><strong>Skills:</strong></p>
+        <ul>
+          <li>C/C++: Advanced</li>
+        </ul>
+      </div>
+    </li>
+    <li>
+      <div class="employee" id="employee-17" onclick="toggleDetails('17')">Mahra alali</div>
+      <div class="details" id="details-17">
+        <p><strong>Major:</strong> Electrical Engineering</p>
+        <p><strong>Expert in:</strong> Electrical engineering, Electronics (PCB, Circuit design and simulation)</p>
+        <p><strong>Interest:</strong> PLC</p>
+        <p><strong>About me:</strong></p>
+        <p><strong>Skills:</strong></p>
+        <ul>
+          <li>C/C++: Advanced</li>
+          <li>PLC programming: Advanced</li>
+          <li>LabVIEW: Advanced</li>
+          <li>CAE software (SolidWorks/Catia/etc): Advanced</li>
+          <li>MatLab/Simulink: Advanced</li>
+        </ul>
+      </div>
+    </li>
+    <li>
+      <div class="employee" id="employee-18" onclick="toggleDetails('18')">Muhammad Amin Tily</div>
+      <div class="details" id="details-18">
+        <p><strong>Major:</strong> Mechatronics Engineering</p>
+        <p><strong>Expert in:</strong> Robotics, Automation and Control, AI, Embedded systems, Electrical engineering</p>
+        <p><strong>Interest:</strong> Machine learning, programming, microcontrollers, robotics</p>
+        <p><strong>About me:</strong></p>
+        <p><strong>Skills:</strong></p>
+        <ul>
+          <li>Python: Advanced</li>
+          <li>C/C++: Advanced</li>
+          <li>Arduino: Expert</li>
+          <li>MatLab/Simulink: Advanced</li>
+          <li>SCADA: Advanced</li>
+        </ul>
+      </div>
+    </li>
+    <li>
+      <div class="employee" id="employee-19" onclick="toggleDetails('19')">Eduardo Kruczkievicz</div>
+      <div class="details" id="details-19">
+        <p><strong>Major:</strong> Mechanical Engineering</p>
+        <p><strong>Expert in:</strong> 3D modeling and design, Manufacturing technologies</p>
+        <p><strong>Interest:</strong> CNC and manufacturing</p>
+        <p><strong>About me:</strong></p>
+        <p><strong>Skills:</strong></p>
+        <ul>
+          <li>CAE software (SolidWorks/Catia/etc): Advanced</li>
+          <li>CAM software: Expert</li>
+        </ul>
+      </div>
+    </li>
+    <li>
+      <div class="employee" id="employee-20" onclick="toggleDetails('20')">Sobers Francis</div>
+      <div class="details" id="details-20">
+        <p><strong>Major:</strong> Mechatronics Engineering</p>
+        <p><strong>Expert in:</strong> Robotics, AI</p>
+        <p><strong>Interest:</strong> Autonomous system control</p>
+        <p><strong>About me:</strong></p>
+        <p><strong>Skills:</strong></p>
+        <ul>
+          <li>Python: Advanced</li>
+          <li>C/C++: Advanced</li>
+          <li>Raspberry PI: Advanced</li>
+          <li>Arduino: Advanced</li>
+          <li>MatLab/Simulink: Advanced</li>
+        </ul>
+      </div>
+    </li>
+
+    <li>
+      <div class="employee" id="employee-21" onclick="toggleDetails('11')">Hussein</div>
+      <div class="details" id="details-11">
+        <p><strong>Major:</strong> Electrical Engineering</p>
+        <p><strong>Expert in:</strong> Electronics (PCB, Circuit design and simulation); Electrical engineering; Automation and Control;</p>
+        <p><strong>Interest:</strong> Electrical and Mechatronics</p>
+        <p><strong>About me:</strong> Mechatronics topics</p>
+        <p><strong>Skills:</strong></p>
+        <ul>
+          <li>C/C++: Advanced</li>
+          <li>PLC programming: Advanced</li>
+          <li>Arduino: Advanced</li>
+          <li>SCADA: Advanced</li>
+        </ul>
+      </div>
+    </li>
+    <li>
+      <div class="employee" id="employee-22" onclick="toggleDetails('22')">Dani Abdo</div>
+      <div class="details" id="details-22">
+        <p><strong>Major:</strong> Mechanical, Modeling and Manufacturing</p>
+        <p><strong>Expert in:</strong> 3D modeling and design; Manufacturing technologies; Material science; Process engineering; Product Design;</p>
+        <p><strong>Interest:</strong> Product design and Design for Manufacturing (DoF), Advanced materials in applied engineering</p>
+        <p><strong>About me:</strong> Product design and Design for Manufacturing (DoF)</p>
+        <p><strong>Skills:</strong></p>
+        <ul>
+          <li>CAE software (SolidWorks/Catia/etc): Expert</li>
+          <li>CAM software: Advanced</li>
+        </ul>
+      </div>
+    </li>
+    <li>
+      <div class="employee" id="employee-23" onclick="toggleDetails('23')">Muhammad Umair Muzaffar</div>
+      <div class="details" id="details-23">
+        <p><strong>Major:</strong> Electrical Engineering</p>
+        <p><strong>Expert in:</strong> Embedded systems; Electrical engineering; AI; Signal Processing;</p>
+        <p><strong>Interest:</strong> Signal Processing and Machine Learning</p>
+        <p><strong>About me:</strong> Communications, Signals and Systems, Machine Learning algorithms</p>
+        <p><strong>Skills:</strong></p>
+        <ul>
+          <li>C/C++: Expert</li>
+          <li>Arduino: Expert</li>
+          <li>MatLab/Simulink: Expert</li>
+        </ul>
+      </div>
+    </li>
+    <li>
+      <div class="employee" id="employee-24" onclick="toggleDetails('24')">Andrei Rogger Belegante</div>
+      <div class="details" id="details-24">
+        <p><strong>Major:</strong> Mechatronics Engineering</p>
+        <p><strong>Expert in:</strong> Robotics; Automation and Control;</p>
+        <p><strong>Interest:</strong> Programming, Logic, PLC programming, Robotics, Mobile Robotics.</p>
+        <p><strong>About me:</strong> My developed skills are in programming logic for robotics and PLC.</p>
+        <p><strong>Skills:</strong></p>
+        <ul>
+          <li>PLC programming: Expert</li>
+          <li>Industrial robots programming (KUKA/Fanuc/etc): Advanced</li>
+        </ul>
+      </div>
+    </li>
+    <li>
+      <div class="employee" id="employee-25" onclick="toggleDetails('25')">Sawsan Dagher</div>
+      <div class="details" id="details-25">
+        <p><strong>Major:</strong> Materials Science & Engineering</p>
+        <p><strong>Expert in:</strong> Manufacturing technologies; Material science; Renewable and sustainable energy; Energy saving and energy audit; Nanotechnology;</p>
+        <p><strong>Interest:</strong> Materials Science</p>
+      </div>
+    </li>
+    <li>
+      <div class="employee" id="employee-26" onclick="toggleDetails('26')">Rasha Tabasha</div>
+      <div class="details" id="details-26">
+        <p><strong>Major:</strong> Electrical Engineering</p>
+        <p><strong>Expert in:</strong> Electronics (PCB, Circuit design and simulation);</p>
+        <p><strong>Interest:</strong> Electronics</p>
+        <p><strong>About me:</strong></p>
+        <ul>
+          <li>C/C++: Expert</li>
+          <li>Arduino: Advanced</li>
+          <li>MatLab/Simulink: Advanced</li>
+        </ul>
+      </div>
+    </li>
+    <li>
+      <div class="employee" id="employee-27" onclick="toggleDetails('27')">Chaima Fekiri</div>
+      <div class="details" id="details-27">
+        <p><strong>Major:</strong> Mechanical engineering</p>
+        <p><strong>Expert in:</strong> Material science; Manufacturing technologies; 3D modeling and design;</p>
+        <p><strong>Interest:</strong> Additive Manufacturing of carbon-based composites</p>
+        <p><strong>About me:</strong> Production Planning and Control. Quality Management and Control.</p>
+      </div>
+    </li>
+
+
+
+    </ul>
+</body>
+</html>
